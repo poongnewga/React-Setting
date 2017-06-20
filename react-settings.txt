@@ -1,0 +1,167 @@
+﻿yarn 설치
+yarn init
+yarn add react
+yarn add react-dom
+yarn add prop-types
+
+아톰
+editorconfig 설치
+.editorconfig 추가
+>>
+# editorconfig.org
+root = true
+
+[*]
+indent_style = space
+indent_size = 2
+end_of_line = lf
+charset = utf-8
+insert_final_newline = true
+trim_trailing_whitespace = true
+>>
+
+prettier-atom 설치
+세팅 설정.
+로컬 설치
+yarn add --dev prettier  >> 현재 버전 1.4.4
+
+eslint 설치(아톰)
+eslint dev 설치>>
+yarn add --dev eslint@3.19
+(버전4는 다른 패키지와 오류가 나는 것 같다.)
+
+.eslintrc.json 파일 추가>>
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "prettier/react"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 2016,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true
+  }
+}
+>>
+
+node_modules/.bin/ 에 .eslintrc.json 재추가 후,
+프로젝트 디렉토리에서 다시,
+yarn add --dev eslint-plugin-prettier   >> 현재 버전 2.1.2
+yarn add --dev eslint-config-prettier   >> 현재 버전 2.2.0
+yarn add --dev eslint-config-airbnb     >> 현재 버전 15.0.1
+yarn add --dev eslint-plugin-jsx-a11y   >> 현재 버전 5.0.3
+yarn add --dev eslint-plugin-react      >> 현재 버전 7.1.0
+yarn add --dev eslint-plugin-import     >> 현재 버전 2.3.0
+
+아톰에
+lauguage-babel 설치 => .jsx 인식함
+
+ESLint가 먹지 않는다면 재설치를 해본다.(뜨는데 오래걸릴 때도 있다.)
+
+.babelrc 작성>>
+{
+  "presets": [
+    "react",
+    ["env", {
+      "targets": {
+        "browsers": "last 2 versions"
+      },
+      "loose": true,
+      "modules": false
+    }]
+  ]
+}
+>>
+
+webpack.config.js 작성>>
+const path = require('path');
+
+module.exports = {
+  context: __dirname,
+  entry: './js/Client.jsx',
+  devtool: 'cheap-eval-source-map',
+  output: {
+    path: path.join(__dirname, 'public'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.json']
+  },
+  stats: {
+    colors: true,
+    reasons: true,
+    chunks: true
+  },
+  module: {
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
+};
+>>
+
+웹팩 로컬 설치 후 스크립트 등록
+yarn add --dev webpack          >> 현재 3.0.0
+yarn add --dev babel-loader     >> 현재 7.0.0
+yarn add --dev babel-core       >> 현재 6.25.0
+yarn add --dev babel-preset-env >> 현재 1.5.2
+yarn add --dev babel-preset-react >> 현재 6.24.1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
