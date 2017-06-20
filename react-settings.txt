@@ -1,13 +1,16 @@
-﻿yarn 설치
+﻿*******************************************React 사용을 위한 기본 셋팅*********************************************************
+yarn 설치
 yarn init
 yarn add react
 yarn add react-dom
 yarn add prop-types
 
-아톰
+
+Atom>>
+
 editorconfig 설치
-.editorconfig 추가
->>
+.editorconfig 추가>>
+
 # editorconfig.org
 root = true
 
@@ -18,19 +21,20 @@ end_of_line = lf
 charset = utf-8
 insert_final_newline = true
 trim_trailing_whitespace = true
+
 >>
 
-prettier-atom 설치
-세팅 설정.
-로컬 설치
+prettier-atom 패키지 설치(Atom) 및 세팅 변경
+prettier 로컬 설치
 yarn add --dev prettier  >> 현재 버전 1.4.4
 
-eslint 설치(아톰)
-eslint dev 설치>>
+eslint 패키지 설치(Atom)
+eslint 로컬 설치>>
 yarn add --dev eslint@3.19
-(버전4는 다른 패키지와 오류가 나는 것 같다.)
+(가장 최근에 버전 4로 업데이트 됐으나 호환문제로 3 사용함)
 
-.eslintrc.json 파일 추가>>
+.eslintrc.json 파일 추가(ESLint 설정 파일)>>
+
 {
   "extends": [
     "airbnb",
@@ -53,10 +57,11 @@ yarn add --dev eslint@3.19
     "node": true
   }
 }
+
 >>
 
-node_modules/.bin/ 에 .eslintrc.json 재추가 후,
-프로젝트 디렉토리에서 다시,
+각종 부가적인 모듈 로컬 설치>>
+
 yarn add --dev eslint-plugin-prettier   >> 현재 버전 2.1.2
 yarn add --dev eslint-config-prettier   >> 현재 버전 2.2.0
 yarn add --dev eslint-config-airbnb     >> 현재 버전 15.0.1
@@ -64,12 +69,13 @@ yarn add --dev eslint-plugin-jsx-a11y   >> 현재 버전 5.0.3
 yarn add --dev eslint-plugin-react      >> 현재 버전 7.1.0
 yarn add --dev eslint-plugin-import     >> 현재 버전 2.3.0
 
-아톰에
-lauguage-babel 설치 => .jsx 인식함
+>>
 
-ESLint가 먹지 않는다면 재설치를 해본다.(뜨는데 오래걸릴 때도 있다.)
+lauguage-babel 패키지 설치(Atom) => 이를 통해 .jsx 인식 가능
+ESLint가 적용되지 않는다면 재설치 권장.(적용하는데 오래걸릴 때도 있다.)
 
 .babelrc 작성>>
+
 {
   "presets": [
     "react",
@@ -82,9 +88,11 @@ ESLint가 먹지 않는다면 재설치를 해본다.(뜨는데 오래걸릴 때
     }]
   ]
 }
+
 >>
 
 webpack.config.js 작성>>
+
 const path = require('path');
 
 module.exports = {
@@ -112,14 +120,36 @@ module.exports = {
     ]
   }
 };
+
 >>
 
-웹팩 로컬 설치 후 스크립트 등록
+웹팩 로컬 설치>>
+
 yarn add --dev webpack          >> 현재 3.0.0
 yarn add --dev babel-loader     >> 현재 7.0.0
 yarn add --dev babel-core       >> 현재 6.25.0
 yarn add --dev babel-preset-env >> 현재 1.5.2
 yarn add --dev babel-preset-react >> 현재 6.24.1
+
+명령어 package.json에 등록>>
+
+"scripts": {
+  "format": "prettier --write --single-quote --print-width=120 \"js/**/*.{js,jsx}\"",
+  "lint": "eslint **/*.{js,jsx} --quiet",
+  "build": "webpack"
+},
+
+>>
+
+Atom 사용 시 jsx에서 Tab으로 자동 완성을 하려면 File>Keymap에 다음 2줄을 추가>>
+
+'atom-text-editor[data-grammar~="jsx"]:not([mini])':
+  'tab': 'emmet:expand-abbreviation-with-tab'
+
+>>
+
+
+*******************************************React 사용을 위한 기본 셋팅*********************************************************
 
 
 
