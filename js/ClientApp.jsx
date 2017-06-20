@@ -1,12 +1,13 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import MyTitle from './MyTitle';
+import { render } from 'react-dom';
 
-const MyFirstComponent = () =>
-  <div>
-    <MyTitle title="Props are great!" color="rebeccapurple" />
-    <MyTitle title="Use props everywhere!" color="mediumaquamarine" />
-    <MyTitle title="Props are the best!" color="peru" />
+const App = () =>
+  <div className="app">
+    <div className="landing">
+      <h1>svideo</h1>
+      <input type="text" placeholder="Search" />
+      <a>or Browse All</a>
+    </div>
   </div>;
 
-ReactDOM.render(<MyFirstComponent />, document.getElementById('app'));
+render(<App />, document.getElementById('app'));

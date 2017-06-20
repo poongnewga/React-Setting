@@ -125,7 +125,7 @@ module.exports = {
 
 웹팩 로컬 설치>>
 
-yarn add --dev webpack          >> 현재 3.0.0
+yarn add --dev webpack          >> 현재 3.0.0(2.6.1 권장)
 yarn add --dev babel-loader     >> 현재 7.0.0
 yarn add --dev babel-core       >> 현재 6.25.0
 yarn add --dev babel-preset-env >> 현재 1.5.2
@@ -148,7 +148,29 @@ Atom 사용 시 jsx에서 Tab으로 자동 완성을 하려면 File>Keymap에 �
 
 >>
 
+웹팩이 번들링 하기 전에 ESLint를 실행하게 하기 위해서 eslint-loader를 설치한다.
+yarn add --dev eslint-loader   >> 현재 1.8.0
+그리고 webpack.config.js의 rules에 다음을 추가한다. >>
 
+{
+  enforce: "pre",
+  test: /\.js$/,
+  loader: "eslint-loader",
+  exclude: /node_modules/
+}
+
+>>  그런데 적용되지 않는다.... Atom에서 자체적으로 ESLint 적용하니까 안써도 상관없을 듯! >>
+
+개발을 위한 서버인 webpack-dev-server를 설치한다.
+yarn add --dev webpack-dev-server   >> 현재 2.4.5
+
+webpack.config.js 에 다음을 추가한다.>>
+
+devServer: {
+  publicPath: '/public/'
+}
+
+>>
 *******************************************React 사용을 위한 기본 셋팅*********************************************************
 
 
